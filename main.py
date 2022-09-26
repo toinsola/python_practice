@@ -27,6 +27,19 @@ def create_database(connection, query):
     except Error as err:
         print(f"Error: '{err}'")
 
+def execute_query(connection, query):
+    cursor = connection.cursor()
+    try:
+        cursor.execute(query)
+        connection.commit()
+        print("Query successful")
+    except Error as err:
+        print(f"Error: '{err}'")
+
+
+
+
+
 #Callout section
 connection = create_server_connection("localhost", "root", "student", "Exotic_Dealership")
 database_query = "CREATE DATABASE Exotic_Dealership"

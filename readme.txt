@@ -113,5 +113,15 @@ connection = create_server_connection("localhost", "root", "student", "Exotic_De
 database_query = "CREATE DATABASE Exotic_Dealership"
 create_database(connection, database_query)
 
-7.)
+7.) Create workhorse function to
+
+def execute_query(connection, query):
+    cursor = connection.cursor()
+    try:
+        cursor.execute(query)
+        connection.commit()
+        print("Query successful")
+    except Error as err:
+        print(f"Error: '{err}'")
+
 
