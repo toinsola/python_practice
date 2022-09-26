@@ -36,11 +36,25 @@ def execute_query(connection, query):
     except Error as err:
         print(f"Error: '{err}'")
 
+#queries
+
+#create tables:
+
+create_vehicle_information_table = """
+CREATE TABLE Vehicle_Information(
+Make_Model VARCHAR(50) NOT NULL,
+PRICE VARCHAR(50) NOT NULL,
+Mileage VARCHAR(50) NOT NULL,
+Color VARCHAR(20) NOT NULL);"""
 
 
+create_staff_table = """
+CREATE TABLE Directory(
+Name VARCHAR(70) NOT NULL,
+Position VARCHAR(70) NOT NULL,
+Benefits VARCHAR(5) NOT NULL)"""
 
 
 #Callout section
 connection = create_server_connection("localhost", "root", "student", "Exotic_Dealership")
-database_query = "CREATE DATABASE Exotic_Dealership"
-create_database(connection, database_query)
+execute_query(connection, create_staff_table)
