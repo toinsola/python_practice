@@ -92,6 +92,13 @@ SELECT * FROM Directory;
 
 """
 
+#deleting of values
+
+delete_vehicle = """
+DELETE FROM Vehicle_Information
+WHERE make_model = "McLaren 720S";
+"""
+
 #updating information
 
 vehicle_updates = """
@@ -99,10 +106,19 @@ UPDATE Vehicle_Information
 SET mileage = "100"
 WHERE make_model = "McLaren 720S";"""
 
+drop_table = """
+DROP TABLE Directory;
+"""
+
+drop_database = """
+DROP DATABASE Exotic_Dealership;
+
+"""
+
 
 #Callout section
 connection = create_server_connection("localhost", "root", "student", "Exotic_Dealership")
-execute_query(connection, vehicle_updates)
+execute_query(connection, drop_database)
 #execute_query(connection, employee_info)
 information = read_query(connection, display_vehicle_information)
 
