@@ -54,7 +54,21 @@ Name VARCHAR(70) NOT NULL,
 Position VARCHAR(70) NOT NULL,
 Benefits VARCHAR(5) NOT NULL)"""
 
+#populate tables
+
+vehicle_info = """
+INSERT INTO Vehicle_Information VALUES
+("McLaren 720S", "$230,000", "50", "Graphite"),
+("Aston Martin Vanquish", "$450,000", "112", "Silver"),
+("Bugatti Chiron", "$2,450,000", "3", "Black")"""
+
+employee_info = """
+INSERT INTO Directory Values
+("Dorothy Moore", "Area Manager", "Yes"),
+("Mark Maxwell", "Department Manager", "Yes"),
+("Brendan Dean", "Sales Representative", "Yes"),
+("Christina Berry", "Sales Representative", "Yes")"""
 
 #Callout section
 connection = create_server_connection("localhost", "root", "student", "Exotic_Dealership")
-execute_query(connection, create_staff_table)
+execute_query(connection, employee_info)
