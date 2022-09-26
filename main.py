@@ -36,6 +36,17 @@ def execute_query(connection, query):
     except Error as err:
         print(f"Error: '{err}'")
 
+def read_query(connection, query):
+    cursor = connection.cursor()
+    result = None
+    try:
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result
+    except Error as err:
+        print(f"Error: '{err}'")
+
+
 #queries
 
 #create tables:
@@ -69,6 +80,23 @@ INSERT INTO Directory Values
 ("Brendan Dean", "Sales Representative", "Yes"),
 ("Christina Berry", "Sales Representative", "Yes")"""
 
+#fetching values from tables, from DB
+
+display_vehicle_information = """
+SELECT * FROM Vehicle_Information;
+"""
+
+display_directory_information = """
+SELECT * FROM Directory;
+
+
+"""
+
 #Callout section
 connection = create_server_connection("localhost", "root", "student", "Exotic_Dealership")
-execute_query(connection, employee_info)
+
+#execute_query(connection, employee_info)
+information = read_query(connection, display_vehicle_information)
+
+for values in information:
+    print(values)
